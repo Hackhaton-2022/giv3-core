@@ -4,7 +4,7 @@ pragma solidity ^0.8.10;
 // import erc20
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import "./IGiv3Core.sol";
+import "./interface/IGiv3Core.sol";
 
 contract Giv3Treasury {
     uint256 public ethBalance;

@@ -3,7 +3,7 @@ pragma solidity ^0.8.10;
 
 import "./Giv3Treasury.sol";
 
-contract Giv3NFTFactory {
+contract Giv3TreasuryFactory {
     uint256 collectionsCounter = 0;
 
     // Map Id to collection
@@ -25,15 +25,15 @@ contract Giv3NFTFactory {
     function createTreasury(string memory name)
         public
         onlyGiv3
-        returns (address)
+        returns (Giv3Treasury)
     {
-        Giv3Treasury giv3Address = new Giv3Treasury(name, GIV3_CORE);
+        Giv3Treasury giv3Treasury = new Giv3Treasury(name, GIV3_CORE);
 
-        treasuries[collectionsCounter] = giv3Address;
+        treasuries[collectionsCounter] = giv3Treasury;
         collectionsCounter++;
 
         emit TreasuryCreated(collectionsCounter - 1, name);
-        return address(giv3Address);
+        return giv3Treasury;
     }
 
     function getCollection(uint256 id) public view returns (Giv3Treasury) {

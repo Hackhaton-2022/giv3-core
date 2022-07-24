@@ -3,8 +3,8 @@ pragma solidity ^0.8.10;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "./Base64.sol";
-import "./IGiv3Core.sol";
-import "./IImageStorage.sol";
+import "./interface/IGiv3Core.sol";
+import "./interface/IImageStorage.sol";
 
 contract Giv3NFT is ERC721 {
     using Strings for uint256;
@@ -154,7 +154,10 @@ contract Giv3NFT is ERC721 {
         string memory image;
         // NFTS that level up based on the governance score of the token.
         // Get Image from Image Storage Contract
-        IMAGE_STORAGE.getImageForCollection(collectionIndex, _powerlevel);
+        image = IMAGE_STORAGE.getImageForCollection(
+            collectionIndex,
+            _powerlevel
+        );
         bytes memory m1 = abi.encodePacked(
             '{"name":"',
             name(),
