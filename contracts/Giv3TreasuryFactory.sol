@@ -36,7 +36,7 @@ contract Giv3TreasuryFactory {
         return giv3Treasury;
     }
 
-    function getCollection(uint256 id) public view returns (Giv3Treasury) {
+    function getTreasury(uint256 id) public view returns (Giv3Treasury) {
         return treasuries[id];
     }
 }
